@@ -22,7 +22,8 @@ class Tache
 	 int getDuree() const;
 	 string getUniteMesure() const;
 	 string getEtatAvancement() const;
-	 void setIdentifiant(string);
+
+	void setIdentifiant(string);
 	void setTitre(string);
 	void initialiserDuree(int, string);
 	void setEtat(string);

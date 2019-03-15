@@ -380,8 +380,26 @@ namespace employes {
 	private: System::Void btnRechercherEmploye_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 
-	private: System::Void btnAjouterTache_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void btnAjouterTache_Click(System::Object^  sender, System::EventArgs^  e)
+	{
 		Tache tacheCourante;
+
+		string identifiant = msclr::interop::marshal_as<std::string>(txtIdentifiant->Text);
+		string titre = msclr::interop::marshal_as<std::string>(txtTitre->Text);
+		int duree = Convert::ToInt32(txtDuree->Text);
+		string mesure = msclr::interop::marshal_as<std::string>(txtMesure->Text);
+		string etat = msclr::interop::marshal_as<std::string>(txtEtat->Text);
+
+		tacheCourante.setIdentifiant(identifiant);
+		tacheCourante.setTitre(titre);
+		tacheCourante.initialiserDuree(duree, mesure);
+		tacheCourante.setEtat(etat);
+
+		if (lesDonneesDuProgramme.AjouterTache(tacheCourante))
+		{
+			MessageBox::Show("Enregistrement fait");
+		};
+
 
 		ViderZonesTexteTache();
 	}
