@@ -21,6 +21,8 @@ public:
 	bool AjouterTache(Tache);
 	Employe ChercherEmployeSelonNumero(string);
 	Tache ChercherTacheParIdentifiant(string);
+
+	
 };
 
 #endif
