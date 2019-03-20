@@ -413,7 +413,32 @@ namespace employes {
 		txtEtat->Text = "";
 	}
 
-	private: System::Void btnRechercherTache_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void btnRechercherTache_Click(System::Object^  sender, System::EventArgs^  e)
+	{
+		string ID = msclr::interop::marshal_as<std::string>(txtIdentifiant->Text);
+
+		if (ID != "") 
+		{
+			Tache tacheRechercher;
+			tacheRechercher = lesDonneesDuProgramme.ChercherTacheParIdentifiant(ID);
+
+			if (tacheRechercher.getIdentifiant() != "") 
+			{
+				txtIdentifiant->Text = gcnew String(tacheRechercher.getIdentifiant().c_str());
+				txtTitre->Text = gcnew String(tacheRechercher.getTitre().c_str());
+				txtDuree->Text = tacheRechercher.getDuree().ToString();
+				txtMesure->Text = gcnew String(tacheRechercher.getUniteMesure().c_str());
+				txtEtat->Text = gcnew String(tacheRechercher.getEtatAvancement().c_str());
+			}
+		
+		}
+		else
+		{
+
+			MessageBox::Show("La tache n'est pas dans la base de donnee");
+		}
+
+
 	}
 
 };
